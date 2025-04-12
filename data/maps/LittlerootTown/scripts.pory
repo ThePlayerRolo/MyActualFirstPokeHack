@@ -1028,9 +1028,69 @@ LittlerootTown_Text_StarterArea:
 	.string "Where PROF. BIRCH gets his starters.\n"
 	.string "Only For Authorized Trainers and\p"
 	.string "Professors! - PROF. BIRCH$"
-
 `
 
+//Guy THAT GIVES MASTERBALLS :TROLL:
+
+script LitteRootTownMasterOldMan {
+    lockall
+    checkplayergender()
+    if (!flag(FLAG_OLDMAN_MASTER)) {
+    switch (var(VAR_RESULT)) {
+            case 0:
+                msgbox(OldManAskTextMale, MSGBOX_YESNO)
+                if (var(VAR_RESULT) == YES) {
+                    giveitem(ITEM_MASTER_BALL, 50)
+                    if (var(VAR_RESULT) == YES) {
+                        setflag(FLAG_OLDMAN_MASTER)
+                    } else {
+                        msgbox("You had no room, so you couldn't finish the offer.")
+                    }
+                } else {
+                msgbox(OldManNoText)
+                }
+            case 1:
+                msgbox(OldManAskTextFemale, MSGBOX_YESNO)
+                if (var(VAR_RESULT) == YES) {
+                    giveitem(ITEM_MASTER_BALL, 50)
+                    if (var(VAR_RESULT) == YES) {
+                        setflag(FLAG_OLDMAN_MASTER)
+                    } else {
+                        msgbox("You had no room, so you couldn't finish the offer.")
+                    }
+                } else {
+                msgbox(OldManNoText)
+                }
+
+    }
+    }
+    else {
+        msgbox(OldManAlreadyReceived)
+    }
+    waitmessage
+    releaseall
+    end
+}
+text OldManAlreadyReceived {
+    "I got those Pokeballs\n"
+    "From Scavenging A Mine.\p"
+    "Neat, huh?$"
+}
+text OldManAskTextMale {
+    "Oh Little Sonny, do you want\n"
+    "something from my childhood?$"
+
+}
+text OldManAskTextFemale {
+    "Oh Little Missy, do you want\n"
+    "something from my childhood?$"
+}
+text OldManNoText {
+    "Oh that's alright.$"
+
+}
+
+//Unused Snorlax Things So Far
 script LittlerootTownSnorlax {
     lockall
     msgbox(SnorlaxText)
@@ -1042,8 +1102,10 @@ text SnorlaxText {
     "It seems he won't move for\n"
     "a long time......"
 }
-//.macro givemon species:req, level:req, item, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4
-//atkEv=252, speedEv=252, spDefEv=4, hpIv=31, atkIv=31,defIv=31, speedIv=31, spAtkIv=31,spDefIv=31
+
+
+
+// Dumb Kid That Gives Garchomp
 script LittleRootTownPokemonGiverBoy {
     lockall
     if (!flag(FLAG_GARCHOMP_BOY)) {
