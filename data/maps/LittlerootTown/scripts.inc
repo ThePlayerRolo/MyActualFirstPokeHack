@@ -42,6 +42,7 @@ LittlerootTown_MapScripts::
 LittlerootTown_OnTransition:
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
 	call Common_EventScript_SetupRivalGfxId
+	call CheckIfSnorlax
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_MoveMomToMaysDoor
 	call_if_unset FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_SetTwinPos
 	call_if_eq VAR_LITTLEROOT_TOWN_STATE, 3, LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos
@@ -398,6 +399,9 @@ LittlerootTown_EventScript_TownSign::
 
 LittlerootTown_EventScript_BirchsLabSign::
 	msgbox LittlerootTown_Text_ProfBirchsLab, MSGBOX_SIGN
+	end
+LittlerootTown_EventScript_StarterAreaSign::
+	msgbox LittlerootTown_Text_StarterArea, MSGBOX_SIGN
 	end
 
 LittlerootTown_EventScript_BrendansHouseSign::
@@ -1018,4 +1022,122 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I gave you?\p"
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
+
+LittlerootTown_Text_StarterArea:
+	.string "Where PROF. BIRCH gets his starters.\n"
+	.string "Only For Authorized Trainers and\p"
+	.string "Professors! - PROF. BIRCH$"
+
+
+LittleRootTownPokemonGiverBoy::
+	lockall
+	goto_if_unset FLAG_DRAGONITE_BOY, LittleRootTownPokemonGiverBoy_2
+	msgbox GiverBoyYesAfterText
+LittleRootTownPokemonGiverBoy_1:
+	waitmessage
+	releaseall
+	end
+
+LittleRootTownPokemonGiverBoy_2:
+	showmonpic SPECIES_DRAGONITE, 10, 3
+	msgbox GiverBoyAskText, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq LittleRootTownPokemonGiverBoy_5
+	hidemonpic
+	msgbox LittleRootTownPokemonGiverBoy_Text_2
+	goto LittleRootTownPokemonGiverBoy_1
+
+LittleRootTownPokemonGiverBoy_5:
+	givemon SPECIES_DRAGONITE, 50, ITEM_ULTRA_BALL
+	compare VAR_RESULT, MON_GIVEN_TO_PARTY
+	goto_if_eq LittleRootTownPokemonGiverBoy_8
+	compare VAR_RESULT, MON_GIVEN_TO_PC
+	goto_if_eq LittleRootTownPokemonGiverBoy_9
+	msgbox LittleRootTownPokemonGiverBoy_Text_1
+	goto LittleRootTownPokemonGiverBoy_1
+
+LittleRootTownPokemonGiverBoy_8:
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox LittleRootTownPokemonGiverBoy_Text_0
+	setflag FLAG_DRAGONITE_BOY
+	call NicknamePartyMon
+	goto LittleRootTownPokemonGiverBoy_1
+
+LittleRootTownPokemonGiverBoy_9:
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox LittleRootTownPokemonGiverBoy_Text_0
+	setflag FLAG_DRAGONITE_BOY
+	call NicknameBoxMon
+	goto LittleRootTownPokemonGiverBoy_1
+
+
+NicknamePartyMon::
+	msgbox NicknamePartyMon_Text_0, MSGBOX_YESNO
+	hidemonpic
+	compare VAR_RESULT, YES
+	goto_if_eq NicknamePartyMon_1
+	return
+
+NicknamePartyMon_1:
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	return
+
+
+NicknameBoxMon::
+	msgbox NicknamePartyMon_Text_0, MSGBOX_YESNO
+	hidemonpic
+	compare VAR_RESULT, YES
+	goto_if_eq NicknameBoxMon_2
+NicknameBoxMon_1:
+	call Common_EventScript_TransferredToPC
+	return
+
+NicknameBoxMon_2:
+	call Common_EventScript_NameReceivedBoxMon
+	goto NicknameBoxMon_1
+
+
+LittleRootTownPokemonGiverBoy_Text_0:
+	.string "Received Dragonite!$"
+
+LittleRootTownPokemonGiverBoy_Text_1:
+	.string "You have no space, so you can't accept the offer.$"
+
+LittleRootTownPokemonGiverBoy_Text_2:
+	.string "Well if you want him, just tell me.$"
+
+NicknamePartyMon_Text_0:
+	.string "Give it a nickname?$"
+
+GiverBoyAskText::
+	.string "So I don't really want this Pokemon,\n"
+	.string "You Want It?$"
+
+GiverBoyYesAfterText::
+	.string "Hope you like him and you take care\n"
+	.string "of him well....\p"
+	.string ".........................$"
+
+
+
+
+LittlerootTownSnorlax::
+	lockall
+	msgbox SnorlaxText
+	release
+	return
+
+
+SnorlaxText::
+	.string "It seems he won't move for\n"
+	.string "a long time......$"
+
+CheckIfSnorlax::
+	goto_if_set FLAG_DRAGONITE_BOY, CheckIfSnorlax_1
+	return
+
+CheckIfSnorlax_1:
+	removeobject 10
+	return
 
