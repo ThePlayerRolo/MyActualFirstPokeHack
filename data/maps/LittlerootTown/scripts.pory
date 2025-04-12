@@ -1039,19 +1039,11 @@ script LitteRootTownMasterOldMan {
     switch (var(VAR_RESULT)) {
             case 0:
                 msgbox(OldManAskTextMale, MSGBOX_YESNO)
-                if (var(VAR_RESULT) == YES) {
-                    giveitem(ITEM_MASTER_BALL, 50)
-                    if (var(VAR_RESULT) == YES) {
-                        setflag(FLAG_OLDMAN_MASTER)
-                    } else {
-                        msgbox("You had no room, so you couldn't finish the offer.")
-                    }
-                } else {
-                msgbox(OldManNoText)
-                }
             case 1:
                 msgbox(OldManAskTextFemale, MSGBOX_YESNO)
-                if (var(VAR_RESULT) == YES) {
+
+    }
+    if (var(VAR_RESULT) == YES) {
                     giveitem(ITEM_MASTER_BALL, 50)
                     if (var(VAR_RESULT) == YES) {
                         setflag(FLAG_OLDMAN_MASTER)
@@ -1061,8 +1053,6 @@ script LitteRootTownMasterOldMan {
                 } else {
                 msgbox(OldManNoText)
                 }
-
-    }
     }
     else {
         msgbox(OldManAlreadyReceived)
