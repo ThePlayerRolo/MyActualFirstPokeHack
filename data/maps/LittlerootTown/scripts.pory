@@ -1095,6 +1095,9 @@ text SnorlaxText {
 
 
 
+// Lugia Event For Testing
+
+
 // Dumb Kid That Gives Garchomp
 script LittleRootTownPokemonGiverBoy {
     lockall
