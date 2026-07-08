@@ -2,6 +2,10 @@ const u8 gItemEffect_Potion[7] = {
     [4] = ITEM4_HEAL_HP,
     [6] = 20, // Amount of HP to recover
 };
+const u8 gItemEffect_NEWPotion[7] = {
+    [4] = ITEM4_HEAL_HP,
+    [6] = 75, // Amount of HP to recover
+};
 
 const u8 gItemEffect_Antidote[6] = {
     [3] = ITEM3_POISON,
@@ -458,4 +462,9 @@ const u8 gItemEffect_TamatoBerry[10] = {
     [5] = ITEM5_EV_SPEED | ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_SUBTRACT_EV,
     EV_BERRY_FRIENDSHIP_CHANGE,
+};
+
+const u8 gItemEffect_NewPotion[7] = {
+    [4] = ITEM4_HEAL_HP,
+    [6] = 75, // Amount of HP to recover
 };

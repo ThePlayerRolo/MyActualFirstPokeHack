@@ -2125,102 +2125,102 @@ LittlerootTownSnorlax::
 
 
 LittleRootTownPokemonGiverBoy::
-# 1100 "data/maps/LittlerootTown/scripts.pory"
+# 1103 "data/maps/LittlerootTown/scripts.pory"
 	lockall
-# 1101 "data/maps/LittlerootTown/scripts.pory"
+# 1104 "data/maps/LittlerootTown/scripts.pory"
 	goto_if_unset FLAG_GARCHOMP_BOY, LittleRootTownPokemonGiverBoy_2
-# 1126 "data/maps/LittlerootTown/scripts.pory"
+# 1129 "data/maps/LittlerootTown/scripts.pory"
 	msgbox GiverBoyYesAfterText
 LittleRootTownPokemonGiverBoy_1:
-# 1128 "data/maps/LittlerootTown/scripts.pory"
+# 1131 "data/maps/LittlerootTown/scripts.pory"
 	waitmessage
-# 1129 "data/maps/LittlerootTown/scripts.pory"
+# 1132 "data/maps/LittlerootTown/scripts.pory"
 	releaseall
 	end
 
 LittleRootTownPokemonGiverBoy_2:
-# 1102 "data/maps/LittlerootTown/scripts.pory"
+# 1105 "data/maps/LittlerootTown/scripts.pory"
 	showmonpic SPECIES_GARCHOMP, 10, 3
-# 1103 "data/maps/LittlerootTown/scripts.pory"
+# 1106 "data/maps/LittlerootTown/scripts.pory"
 	msgbox GiverBoyAskText, MSGBOX_YESNO
-# 1104 "data/maps/LittlerootTown/scripts.pory"
+# 1107 "data/maps/LittlerootTown/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq LittleRootTownPokemonGiverBoy_5
-# 1122 "data/maps/LittlerootTown/scripts.pory"
+# 1125 "data/maps/LittlerootTown/scripts.pory"
 	hidemonpic
-# 1123 "data/maps/LittlerootTown/scripts.pory"
+# 1126 "data/maps/LittlerootTown/scripts.pory"
 	msgbox LittleRootTownPokemonGiverBoy_Text_2
 	goto LittleRootTownPokemonGiverBoy_1
 
 LittleRootTownPokemonGiverBoy_5:
-# 1105 "data/maps/LittlerootTown/scripts.pory"
+# 1108 "data/maps/LittlerootTown/scripts.pory"
 	givemon SPECIES_GARCHOMP, 50, ITEM_LIFE_ORB, ITEM_ULTRA_BALL, NATURE_JOLLY, 0, MALE, atkEv = 252, speedEv = 252, spDefEv = 4, hpIv = 31, atkIv = 31, defIv = 31, speedIv = 31, spAtkIv = 31, spDefIv = 31, move1 = 14, move2 = 89, move3 = 200, move4 = 398
-# 1106 "data/maps/LittlerootTown/scripts.pory"
+# 1109 "data/maps/LittlerootTown/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PARTY
 	goto_if_eq LittleRootTownPokemonGiverBoy_8
-# 1112 "data/maps/LittlerootTown/scripts.pory"
+# 1115 "data/maps/LittlerootTown/scripts.pory"
 	compare VAR_RESULT, MON_GIVEN_TO_PC
 	goto_if_eq LittleRootTownPokemonGiverBoy_9
-# 1119 "data/maps/LittlerootTown/scripts.pory"
+# 1122 "data/maps/LittlerootTown/scripts.pory"
 	msgbox LittleRootTownPokemonGiverBoy_Text_1
 	goto LittleRootTownPokemonGiverBoy_1
 
 LittleRootTownPokemonGiverBoy_8:
-# 1107 "data/maps/LittlerootTown/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 1108 "data/maps/LittlerootTown/scripts.pory"
-	msgbox LittleRootTownPokemonGiverBoy_Text_0
-# 1109 "data/maps/LittlerootTown/scripts.pory"
-	setflag FLAG_GARCHOMP_BOY
 # 1110 "data/maps/LittlerootTown/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 1111 "data/maps/LittlerootTown/scripts.pory"
+	msgbox LittleRootTownPokemonGiverBoy_Text_0
+# 1112 "data/maps/LittlerootTown/scripts.pory"
+	setflag FLAG_GARCHOMP_BOY
+# 1113 "data/maps/LittlerootTown/scripts.pory"
 	call NicknamePartyMon
 	goto LittleRootTownPokemonGiverBoy_1
 
 LittleRootTownPokemonGiverBoy_9:
-# 1113 "data/maps/LittlerootTown/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 1114 "data/maps/LittlerootTown/scripts.pory"
-	msgbox LittleRootTownPokemonGiverBoy_Text_0
-# 1115 "data/maps/LittlerootTown/scripts.pory"
-	setflag FLAG_GARCHOMP_BOY
 # 1116 "data/maps/LittlerootTown/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 1117 "data/maps/LittlerootTown/scripts.pory"
+	msgbox LittleRootTownPokemonGiverBoy_Text_0
+# 1118 "data/maps/LittlerootTown/scripts.pory"
+	setflag FLAG_GARCHOMP_BOY
+# 1119 "data/maps/LittlerootTown/scripts.pory"
 	call NicknameBoxMon
 	goto LittleRootTownPokemonGiverBoy_1
 
 
 NicknamePartyMon::
-# 1146 "data/maps/LittlerootTown/scripts.pory"
+# 1149 "data/maps/LittlerootTown/scripts.pory"
 	msgbox NicknamePartyMon_Text_0, MSGBOX_YESNO
-# 1147 "data/maps/LittlerootTown/scripts.pory"
+# 1150 "data/maps/LittlerootTown/scripts.pory"
 	hidemonpic
-# 1148 "data/maps/LittlerootTown/scripts.pory"
+# 1151 "data/maps/LittlerootTown/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq NicknamePartyMon_1
 	return
 
 NicknamePartyMon_1:
-# 1149 "data/maps/LittlerootTown/scripts.pory"
+# 1152 "data/maps/LittlerootTown/scripts.pory"
 	call Common_EventScript_GetGiftMonPartySlot
-# 1150 "data/maps/LittlerootTown/scripts.pory"
+# 1153 "data/maps/LittlerootTown/scripts.pory"
 	call Common_EventScript_NameReceivedPartyMon
 	return
 
 
 NicknameBoxMon::
-# 1158 "data/maps/LittlerootTown/scripts.pory"
+# 1161 "data/maps/LittlerootTown/scripts.pory"
 	msgbox NicknamePartyMon_Text_0, MSGBOX_YESNO
-# 1159 "data/maps/LittlerootTown/scripts.pory"
+# 1162 "data/maps/LittlerootTown/scripts.pory"
 	hidemonpic
-# 1160 "data/maps/LittlerootTown/scripts.pory"
+# 1163 "data/maps/LittlerootTown/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq NicknameBoxMon_2
 NicknameBoxMon_1:
-# 1163 "data/maps/LittlerootTown/scripts.pory"
+# 1166 "data/maps/LittlerootTown/scripts.pory"
 	call Common_EventScript_TransferredToPC
 	return
 
 NicknameBoxMon_2:
-# 1161 "data/maps/LittlerootTown/scripts.pory"
+# 1164 "data/maps/LittlerootTown/scripts.pory"
 	call Common_EventScript_NameReceivedBoxMon
 	goto NicknameBoxMon_1
 
@@ -2230,19 +2230,19 @@ LitteRootTownMasterOldMan_Text_0:
 	.string "You had no room, so you couldn't finish the offer.$"
 
 LittleRootTownPokemonGiverBoy_Text_0:
-# 1108 "data/maps/LittlerootTown/scripts.pory"
+# 1111 "data/maps/LittlerootTown/scripts.pory"
 	.string "Received Garchomp!$"
 
 LittleRootTownPokemonGiverBoy_Text_1:
-# 1119 "data/maps/LittlerootTown/scripts.pory"
+# 1122 "data/maps/LittlerootTown/scripts.pory"
 	.string "You have no space, so you can't accept the offer.$"
 
 LittleRootTownPokemonGiverBoy_Text_2:
-# 1123 "data/maps/LittlerootTown/scripts.pory"
+# 1126 "data/maps/LittlerootTown/scripts.pory"
 	.string "Well if you want him, just tell me.$"
 
 NicknamePartyMon_Text_0:
-# 1146 "data/maps/LittlerootTown/scripts.pory"
+# 1149 "data/maps/LittlerootTown/scripts.pory"
 	.string "Give it a nickname?$"
 
 OldManAlreadyReceived::
@@ -2271,12 +2271,12 @@ SnorlaxText::
 	.string "a long time......$"
 
 GiverBoyAskText::
-# 1133 "data/maps/LittlerootTown/scripts.pory"
+# 1136 "data/maps/LittlerootTown/scripts.pory"
 	.string "So I don't really want this Pokemon,\n"
 	.string "You Want It?$"
 
 GiverBoyYesAfterText::
-# 1138 "data/maps/LittlerootTown/scripts.pory"
+# 1141 "data/maps/LittlerootTown/scripts.pory"
 	.string "Hope you like them and you take care\n"
 	.string "of him well....\p"
 	.string "… … … … … … … …$"

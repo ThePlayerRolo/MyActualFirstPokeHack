@@ -28,6 +28,7 @@ LittleRootTownMartItems:
 	.2byte ITEM_PROTEIN
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_HYPER_POTION
+	.2byte ITEM_NEW_POTION
 	.2byte ITEM_NONE
 
 LittleRoot_PokeMartClerk_Text_0:
